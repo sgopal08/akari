@@ -4,26 +4,30 @@ public class PuzzleImpl implements Puzzle {
     int [][] board;
 
     public PuzzleImpl(int[][] board) {
-        if(board == null){
-            throw new IllegalArgumentException();
-        }
-
         this.board = board;
     }
 
     @Override
-    public int getWidth(){
-        return board[0].length;
+    public int getWidth() {
+        if (board != null && board.length > 0) {
+            return board[0].length;
+        } else {
+            return 0;
+        }
     }
 
     @Override
-    public int getHeight(){
-        return board.length;
+    public int getHeight() {
+        if (board != null) {
+            return board.length;
+        } else {
+            return 0;
+        }
     }
 
     @Override
     public CellType getCellType(int r, int c){
-        if(r > board[0].length || c > board.length){
+        if(r > board.length || c > board[0].length){
             throw new IndexOutOfBoundsException("Value is outside the bounds of board.");
         }
         if(r <= 4 || c <= 4){
@@ -37,7 +41,7 @@ public class PuzzleImpl implements Puzzle {
 
     @Override
     public int getClue(int r, int c){
-        if(r < board[0].length || c > board.length){
+        if(r < board.length || c > board[0].length){
             throw new IndexOutOfBoundsException("Value is outside the bounds of board.");
         }
 
