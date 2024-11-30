@@ -14,7 +14,7 @@ public class ModelImpl implements Model {
     if (library == null) {
       throw new IllegalArgumentException();
     }
-    this.puzzles = puzzles;
+    this.puzzles = library;
     this.index = 0;
     this.activePuzzle =
         library.getPuzzle(index); // set active puzzle to first one in puzzle library
