@@ -7,7 +7,7 @@ public class ModelImpl implements Model {
   private PuzzleLibrary puzzles;
   private int index;
   private int[][] lamps; // 1 is lit lamp; 0 is not lit
-  private List<ModelObserver> activeObservers;
+  List<ModelObserver> activeObservers;
   private Puzzle activePuzzle;
 
   public ModelImpl(PuzzleLibrary library) {
@@ -21,7 +21,7 @@ public class ModelImpl implements Model {
     this.activeObservers = new ArrayList<>();
     this.lamps =
         new int[activePuzzle.getHeight()][activePuzzle.getWidth()]; // num of rows & num of columns
-      resetPuzzle();
+      this.resetPuzzle();
   }
 
   @Override
@@ -126,7 +126,7 @@ public class ModelImpl implements Model {
 
   @Override
   public Puzzle getActivePuzzle() {
-    return this.activePuzzle;
+    return puzzles.getPuzzle(index);
   }
 
   @Override
@@ -164,9 +164,11 @@ public class ModelImpl implements Model {
               CellType currentCell = getActivePuzzle().getCellType(r,c);
               switch (currentCell){
                   case CORRIDOR:
-                      if(!isLit(r,c) || isLampIllegal(r,c) || isLamp(r,c)) break; return false;
+                      if(!isLit(r,c) || isLampIllegal(r,c) || isLamp(r,c)) return false;
+                      break;
                   case CLUE:
-                      if(!isClueSatisfied(r,c)) break; return false;
+                      if(!isClueSatisfied(r,c)) return false;
+                      break;
               }
           }
       }
