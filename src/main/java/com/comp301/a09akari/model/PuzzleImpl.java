@@ -30,9 +30,11 @@ public class PuzzleImpl implements Puzzle {
         if(r > board.length || c > board[0].length){
             throw new IndexOutOfBoundsException("Value is outside the bounds of board.");
         }
-        if(r <= 4 || c <= 4){
+
+        int value = board[r][c];
+        if(value <= 4){
             return CellType.CLUE;
-        } else if(r == 5 || c == 5){
+        } else if(value == 5){
             return CellType.WALL;
         } else {
             return CellType.CORRIDOR;
@@ -41,7 +43,7 @@ public class PuzzleImpl implements Puzzle {
 
     @Override
     public int getClue(int r, int c){
-        if(r < board.length || c > board[0].length){
+        if(r > board.length || c > board[0].length){
             throw new IndexOutOfBoundsException("Value is outside the bounds of board.");
         }
 
