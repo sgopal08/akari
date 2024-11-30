@@ -157,7 +157,7 @@ public class ModelImpl implements Model {
         CellType currentCell = activePuzzle.getCellType(r, c);
         switch (currentCell) {
           case CORRIDOR:
-            if (!isLit(r, c) || isLampIllegal(r, c) || isLamp(r, c)) return false;
+            if (!isLit(r, c) || isLampIllegal(r, c) && isLamp(r, c)) return false;
             break;
           case CLUE:
             if (!isClueSatisfied(r, c)) return false;
