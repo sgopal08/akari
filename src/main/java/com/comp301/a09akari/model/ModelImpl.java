@@ -86,18 +86,19 @@ public class ModelImpl implements Model {
     }
     int width = activePuzzle.getWidth();
     int height = activePuzzle.getHeight();
-    CellType currentCell = activePuzzle.getCellType(r, c);
 
     // horizontal left-side
     for (int i = c - 1; i >= 0; i--) {
-      if (currentCell != CellType.CORRIDOR) break;
+        CellType currentCell = activePuzzle.getCellType(r, i);
+        if (currentCell != CellType.CORRIDOR) break;
       if (isLamp(r, c)) {
         return true;
       }
     }
     // vertical right-side
     for (int i = c + 1; i < width; i++) {
-      if (currentCell != CellType.CORRIDOR) break;
+        CellType currentCell = activePuzzle.getCellType(r, i);
+        if (currentCell != CellType.CORRIDOR) break;
       if (isLamp(r, c)) {
         return true;
       }
@@ -105,7 +106,8 @@ public class ModelImpl implements Model {
 
     // up
     for (int i = r - 1; i >= 0; i--) {
-      if (currentCell != CellType.CORRIDOR) {
+        CellType currentCell = activePuzzle.getCellType(r, i);
+        if (currentCell != CellType.CORRIDOR) {
         break;
       }
       if (isLamp(r, c)) {
@@ -115,7 +117,8 @@ public class ModelImpl implements Model {
 
     // down
     for (int i = r + 1; i < height; i++) {
-      if (currentCell != CellType.CORRIDOR) {
+        CellType currentCell = activePuzzle.getCellType(r, i);
+        if (currentCell != CellType.CORRIDOR) {
         break;
       }
       if (isLamp(r, c)) {
@@ -160,8 +163,8 @@ public class ModelImpl implements Model {
   public boolean isSolved(){
       //every clue satisfied: if clue is satisfied()
       // every corridor is illuminated: FALSE if corridor is not lit, has illegal lamp, or has a lamp
-      for(int r = 0; r < activePuzzle.getWidth(); r++){
-          for(int c = 0; c < activePuzzle.getHeight(); c++){
+      for(int r = 0; r < activePuzzle.getHeight(); r++){
+          for(int c = 0; c < activePuzzle.getWidth(); c++){
               CellType currentCell = activePuzzle.getCellType(r,c);
               switch (currentCell){
                   case CORRIDOR:
