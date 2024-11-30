@@ -38,6 +38,7 @@ public class ModelImpl implements Model {
     checkBounds(r, c, true);
     if (isLamp(r, c)) {
       lamps[r][c] = 0;
+      notifyObservers();
     }
   }
 
@@ -146,11 +147,11 @@ public class ModelImpl implements Model {
     }
 
     @Override
-  public void setActivePuzzleIndex(int setIndex) {
+  public void setActivePuzzleIndex(int index) {
     if (index < 0 || index >= puzzles.size()) {
       throw new IndexOutOfBoundsException("Active puzzle not in puzzle library");
     }
-    this.index = setIndex;
+    this.index = index;
     activePuzzle = puzzles.getPuzzle(index);
     resetPuzzle();
   }
@@ -159,9 +160,9 @@ public class ModelImpl implements Model {
   public boolean isSolved(){
       //every clue satisfied: if clue is satisfied()
       // every corridor is illuminated: FALSE if corridor is not lit, has illegal lamp, or has a lamp
-      for(int r = 0; r < getActivePuzzle().getWidth(); r++){
-          for(int c = 0; c < getActivePuzzle().getHeight(); c++){
-              CellType currentCell = getActivePuzzle().getCellType(r,c);
+      for(int r = 0; r < activePuzzle.getWidth(); r++){
+          for(int c = 0; c < activePuzzle.getHeight(); c++){
+              CellType currentCell = activePuzzle.getCellType(r,c);
               switch (currentCell){
                   case CORRIDOR:
                       if(!isLit(r,c) || isLampIllegal(r,c) || isLamp(r,c)) return false;
