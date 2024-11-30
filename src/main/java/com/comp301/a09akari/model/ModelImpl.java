@@ -150,14 +150,12 @@ public class ModelImpl implements Model {
 
   @Override
   public boolean isSolved() {
-    // every clue satisfied: if clue is satisfied()
-    // every corridor is illuminated: FALSE if corridor is not lit, has illegal lamp, or has a lamp
     for (int r = 0; r < activePuzzle.getHeight(); r++) {
       for (int c = 0; c < activePuzzle.getWidth(); c++) {
-        CellType currentCell = activePuzzle.getCellType(r, c);
-        switch (currentCell) {
+        CellType current = activePuzzle.getCellType(r, c);
+        switch (current) {
           case CORRIDOR:
-            if (!isLit(r, c) || isLampIllegal(r, c) && isLamp(r, c)) return false;
+            if (!isLit(r, c) || (isLamp(r, c) && isLampIllegal(r, c))) return false;
             break;
           case CLUE:
             if (!isClueSatisfied(r, c)) return false;
