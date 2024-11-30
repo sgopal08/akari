@@ -136,7 +136,7 @@ public class ModelImpl implements Model {
 
   @Override
   public int getPuzzleLibrarySize(){
-      return this.puzzles.size();
+      return puzzles.size();
   }
 
     @Override
@@ -146,11 +146,11 @@ public class ModelImpl implements Model {
     }
 
     @Override
-  public void setActivePuzzleIndex(int index) {
+  public void setActivePuzzleIndex(int setIndex) {
     if (index < 0 || index >= puzzles.size()) {
       throw new IndexOutOfBoundsException("Active puzzle not in puzzle library");
     }
-    this.index = index;
+    this.index = setIndex;
     activePuzzle = puzzles.getPuzzle(index);
     resetPuzzle();
   }
