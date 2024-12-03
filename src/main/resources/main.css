@@ -5,3 +5,34 @@
  * JavaFX start() method:
  *   scene.getStylesheets().add("main.css");
  */
+
+ .instructions{
+ -fx-text-fill: #766f65;
+ -fx-padding: 10 0 10 0; /* top right bottom left*/
+ }
+
+ .white-text{
+ -fx-text-fill: #000000;
+ }
+
+ .buttonStyle{
+ -fx-background-color: lightBlue;
+ -fx-font-size: 14px;
+ -fx-padding: 10px;
+ -fx-border-radius: 5px;
+ -fx-background-radius: 5px;
+ }
+
+ .puzzleNum{
+ -fx-text-fill: black;
+ -fx-font-size: 14px;
+ -fx-font-weight: bold;
+ -fx-padding: 10px;
+ }
+
+.box{
+-fx-fill: lightBlue;
+-fx-stroke: black;
+-fx-stroke-width: 4px;
+
+}
