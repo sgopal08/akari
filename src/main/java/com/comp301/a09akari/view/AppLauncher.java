@@ -24,8 +24,7 @@ public class AppLauncher extends Application {
     library.addPuzzle(puzzle4);
     library.addPuzzle(puzzle5);
 
-
-    //MVC
+    // MVC
     Model model = new ModelImpl(library);
     ClassicMvcController controller = new ControllerImpl(model);
     View view = new View(controller, model);
@@ -36,6 +35,5 @@ public class AppLauncher extends Application {
 
     stage.setTitle("Akari");
     stage.show();
-
   }
 }

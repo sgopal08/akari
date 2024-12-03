@@ -14,28 +14,27 @@ import javafx.stage.Stage;
 import org.w3c.dom.Text;
 
 public class MessageView implements FXComponent {
-    private Model model;
-    private ClassicMvcController controller;
+  private Model model;
+  private ClassicMvcController controller;
 
-    public MessageView(Model model, ClassicMvcController controller){
-        this.model = model;
-        this.controller = controller;
+  public MessageView(Model model, ClassicMvcController controller) {
+    this.model = model;
+    this.controller = controller;
+  }
+
+  @Override
+  public Parent render() {
+    StackPane popUp = new StackPane();
+    if (model.isSolved()) {
+      int num = model.getActivePuzzleIndex() + 1;
+      Rectangle box = new Rectangle();
+      box.setFill(Color.PINK);
+      box.getStyleClass().add("box");
+      Label instructions = new Label("You completed puzzle " + num + "!");
+      instructions.getStyleClass().add("instructions");
+      instructions.setAlignment(Pos.TOP_CENTER);
+      popUp.getChildren().add(instructions);
     }
-
-    @Override
-    public Parent render(){
-        StackPane popUp = new StackPane();
-        if(model.isSolved()){
-            int num = model.getActivePuzzleIndex() + 1;
-            Rectangle box = new Rectangle();
-            box.setFill(Color.PINK);
-            box.getStyleClass().add("box");
-            Label instructions = new Label("You completed puzzle " + num + "!");
-            instructions.getStyleClass().add("instructions");
-            instructions.setAlignment(Pos.TOP_CENTER);
-            popUp.getChildren().add(instructions);
-        }
-        return popUp;
-    }
-
+    return popUp;
+  }
 }
