@@ -26,8 +26,7 @@ public class ControlView implements FXComponent {
     pane.getChildren().clear();
     pane.getChildren().add(renderButtons());
     Label puzzleNum =
-        new Label(
-            ("Puzzle:  " + model.getActivePuzzleIndex() + 1) + "/" + model.getPuzzleLibrarySize());
+        new Label((model.getActivePuzzleIndex() + 1) + "/" + model.getPuzzleLibrarySize());
     puzzleNum.getStyleClass().add("puzzleNum");
     pane.getChildren().add(puzzleNum);
     return pane;

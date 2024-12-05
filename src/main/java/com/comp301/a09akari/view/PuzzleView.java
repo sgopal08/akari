@@ -37,27 +37,40 @@ public class PuzzleView implements FXComponent {
   // displays clues and game board
   @Override
   public Parent render() {
+    // Create a StackPane to center the board
+    StackPane root = new StackPane();
     GridPane board = new GridPane();
     board.setHgap(10);
     board.setVgap(10);
-    int cellSize = 50;
 
-    for (int r = 0; r < model.getActivePuzzle().getHeight(); r++) {
-      for (int c = 0; c < model.getActivePuzzle().getWidth(); c++) {
+    // Get puzzle dimensions
+    int rows = model.getActivePuzzle().getHeight();
+    int cols = model.getActivePuzzle().getWidth();
+
+    // Calculate cell size dynamically based on the frame size
+    double maxWidth = 500; // Example max width of frame
+    double maxHeight = 500; // Example max height of frame
+    double cellSize = Math.min(maxWidth / cols, maxHeight / rows) - 10; // Account for gaps
+
+    for (int r = 0; r < rows; r++) {
+      for (int c = 0; c < cols; c++) {
         switch (model.getActivePuzzle().getCellType(r, c)) {
           case CLUE:
-            displayClue(board, r, c, cellSize);
+            displayClue(board, r, c, (int) cellSize);
             break;
           case WALL:
-            displayWall(board, r, c, cellSize);
+            displayWall(board, r, c, (int) cellSize);
             break;
           case CORRIDOR:
-            displayCorridor(board, r, c, cellSize);
+            displayCorridor(board, r, c, (int) cellSize);
             break;
         }
       }
     }
-    return board;
+
+    // Add the board to the StackPane
+    root.getChildren().add(board);
+    return root;
   }
 
   private void displayClue(GridPane board, int r, int c, int size) {

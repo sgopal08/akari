@@ -29,12 +29,13 @@ public class View implements FXComponent, ModelObserver {
 
   @Override
   public Parent render() {
-    Pane frame = new VBox();
-    frame.setMinWidth(500);
-    frame.setMinHeight(500);
-    frame.getChildren().add(puzzleView.render());
-    frame.getChildren().add(messageView.render());
-    frame.getChildren().add(controlView.render());
+    VBox frame = new VBox();
+    frame.setPrefSize(600, 600); // Optional: Ensure the frame size remains within a reasonable range
+    frame.getChildren().addAll(
+            puzzleView.render(),
+            messageView.render(),
+            controlView.render()
+    );
     return frame;
   }
 
