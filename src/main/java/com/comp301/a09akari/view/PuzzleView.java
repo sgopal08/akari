@@ -37,20 +37,17 @@ public class PuzzleView implements FXComponent {
   // displays clues and game board
   @Override
   public Parent render() {
-    // Create a StackPane to center the board
     StackPane root = new StackPane();
     GridPane board = new GridPane();
     board.setHgap(10);
     board.setVgap(10);
 
-    // Get puzzle dimensions
     int rows = model.getActivePuzzle().getHeight();
     int cols = model.getActivePuzzle().getWidth();
 
-    // Calculate cell size dynamically based on the frame size
-    double maxWidth = 500; // Example max width of frame
-    double maxHeight = 500; // Example max height of frame
-    double cellSize = Math.min(maxWidth / cols, maxHeight / rows) - 10; // Account for gaps
+    double maxWidth = 500;
+    double maxHeight = 500;
+    double cellSize = Math.min(maxWidth / cols, maxHeight / rows) - 10; // gaps?
 
     for (int r = 0; r < rows; r++) {
       for (int c = 0; c < cols; c++) {
@@ -68,7 +65,6 @@ public class PuzzleView implements FXComponent {
       }
     }
 
-    // Add the board to the StackPane
     root.getChildren().add(board);
     return root;
   }
