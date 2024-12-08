@@ -7,32 +7,68 @@
  */
 
  .instructions{
- -fx-text-fill: #766f65;
- -fx-padding: 10 0 10 0; /* top right bottom left*/
+ -fx-text-fill: white;
+ -fx-padding: 30 0 10 0; /* top right bottom left*/
  }
 
  .white-text{
  -fx-text-fill: #000000;
  }
 
+ .vbox{
+ fx-padding: 20px;
+ fx-spacing: 20px;
+ }
+
  .buttonStyle{
- -fx-background-color: lightBlue;
- -fx-font-size: 14px;
+ -fx-background-color: hotPink;
+ -fx-text-fill: white;
+ -fx-font-weight: 10px;
+ -fx-font-size: 20px;
  -fx-padding: 10px;
  -fx-border-radius: 5px;
  -fx-background-radius: 5px;
  }
 
  .puzzleNum{
- -fx-text-fill: black;
- -fx-font-size: 14px;
+ -fx-text-fill: hotPink;
+ -fx-font-size: 20px;
  -fx-font-weight: bold;
  -fx-padding: 10px;
  }
 
+  .current{
+  -fx-text-fill: green;
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+  -fx-padding: 10px;
+  }
+
 .box{
--fx-fill: lightBlue;
+-fx-fill: pink;
 -fx-stroke: black;
 -fx-stroke-width: 4px;
 
+}
+
+.cell{
+-fx-fill: black;
+fx-stroke: white;
+fx-stroke-width: 15px;
+}
+
+.puzzle-number{
+-fx-text-fill: white;
+-fx-font-size: 25px;
+-fx-font-weight: bold;
+}
+
+.message{
+-fx-text-fill: pink;
+-fx-font-size: 30px;
+fx-font-weight: bold;
+}
+
+.background{
+  -fx-background-color: black;
 }

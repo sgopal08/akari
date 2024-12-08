@@ -25,13 +25,14 @@ public class MessageView implements FXComponent {
   @Override
   public Parent render() {
     StackPane popUp = new StackPane();
+    popUp.getStyleClass().add("background");
     if (model.isSolved()) {
       int num = model.getActivePuzzleIndex() + 1;
       Rectangle box = new Rectangle();
-      box.setFill(Color.PINK);
+      box.setFill(Color.HOTPINK);
       box.getStyleClass().add("box");
       Label instructions = new Label("You completed puzzle " + num + "!");
-      instructions.getStyleClass().add("instructions");
+      instructions.getStyleClass().add("message");
       instructions.setAlignment(Pos.TOP_CENTER);
       popUp.getChildren().add(instructions);
     }

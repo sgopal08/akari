@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 
 public class ControlView implements FXComponent {
   private Model model;
@@ -20,13 +21,18 @@ public class ControlView implements FXComponent {
 
   @Override
   public Parent render() {
-
+    StackPane root = new StackPane();
+    root.getStyleClass().add("background");
     HBox pane = new HBox(5);
 
     pane.getChildren().clear();
     pane.getChildren().add(renderButtons());
     Label puzzleNum =
-        new Label((model.getActivePuzzleIndex() + 1) + "/" + model.getPuzzleLibrarySize());
+        new Label(
+            ("Puzzle: "
+                + (model.getActivePuzzleIndex() + 1)
+                + " out of "
+                + model.getPuzzleLibrarySize()));
     puzzleNum.getStyleClass().add("puzzleNum");
     pane.getChildren().add(puzzleNum);
     return pane;
@@ -34,7 +40,6 @@ public class ControlView implements FXComponent {
 
   private HBox renderButtons() {
     HBox layout = new HBox(5);
-    // previous button
     Button prev = new Button("Previous");
     prev.getStyleClass().add("buttonStyle");
     prev.setOnAction(
@@ -43,7 +48,6 @@ public class ControlView implements FXComponent {
         });
     layout.getChildren().add(prev);
 
-    // next
     Button next = new Button("Next");
     next.getStyleClass().add("buttonStyle");
     next.setOnAction(
@@ -52,7 +56,6 @@ public class ControlView implements FXComponent {
         });
     layout.getChildren().add(next);
 
-    // random
     Button rand = new Button("Random");
     rand.getStyleClass().add("buttonStyle");
 
@@ -70,7 +73,6 @@ public class ControlView implements FXComponent {
         });
     layout.getChildren().add(rand);
 
-    // reset
     Button resetButton = new Button("Reset");
     resetButton.getStyleClass().add("buttonStyle");
     resetButton.setOnAction(

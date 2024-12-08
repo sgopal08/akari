@@ -9,6 +9,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.awt.*;
@@ -38,6 +39,7 @@ public class PuzzleView implements FXComponent {
   @Override
   public Parent render() {
     StackPane root = new StackPane();
+    root.getStyleClass().add("background");
     GridPane board = new GridPane();
     board.setHgap(10);
     board.setVgap(10);
@@ -74,10 +76,10 @@ public class PuzzleView implements FXComponent {
     Rectangle cell = new Rectangle(size, size);
     Text text = new Text("" + model.getActivePuzzle().getClue(r, c));
     text.setFill(Color.WHITE);
-    cell.setFill(Color.LIGHTBLUE);
-    // switches colors if they got all the clues in
+    cell.setFill(Color.HOTPINK);
+    text.getStyleClass().add("puzzle-number");
     if (model.isClueSatisfied(r, c)) {
-      cell.setFill(Color.LIMEGREEN);
+      cell.setFill(Color.SPRINGGREEN);
     }
 
     pane.getChildren().addAll(cell, text);
@@ -86,7 +88,7 @@ public class PuzzleView implements FXComponent {
 
   private void displayWall(GridPane board, int r, int c, int size) {
     Rectangle cell = new Rectangle(size, size);
-    cell.setFill(Color.DARKBLUE);
+    cell.setFill(Color.ORANGE);
     board.add(cell, c, r);
   }
 
