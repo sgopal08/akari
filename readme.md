@@ -1,5 +1,7 @@
 # a09-akari
 
+![ScreenRecording2024-12-16at8 45 56PM-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/60384429-1409-45d2-b3f8-2271a1acaff4)
+
 ## Introduction
 
 In this assignment, you will use the model-view-controller design pattern together with the JavaFX UI library to design a complete, functioning GUI implementation of the single-player logic puzzle akari.
