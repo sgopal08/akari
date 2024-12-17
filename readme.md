@@ -1,6 +1,6 @@
-# a09-akari
+# Akari Game
 
-![ScreenRecording2024-12-16at8 45 56PM-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/60384429-1409-45d2-b3f8-2271a1acaff4)
+![ScreenRecording2024-12-16at8 45 56PM-ezgif com-resize](https://github.com/user-attachments/assets/21195749-7879-4fa2-8704-c117fd8d7b35)
 
 ## Introduction
 
